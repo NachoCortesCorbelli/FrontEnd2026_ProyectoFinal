@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ElPortalGamer | Juegos de PC</title>
+
+    <link rel="icon" type="image/png" href="./assets/img/favicon-32x32.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>ElPortalGamer</h1>
+        <p>Los mejores juegos de PC en un solo lugar</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#juegos">Juegos</a></li>
+            <li><a href="#reseñas">Reseñas</a></li>
+            <li><a href="#trailer">Trailer</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section id="inicio">
+
+            <div class="hero-texto">
+                <h2>Explorá los mejores juegos de PC</h2>
+
+                <p>
+                    Acción, aventura, RPG y experiencias épicas.
+                </p>
+
+                <a href="#juegos" class="btn">
+                    Ver Juegos
+                </a>
+            </div>
+
+        </section>
+
+        <section id="juegos">
+
+            <h2>Juegos Destacados</h2>
+
+            <div class="contenedor-juegos">
+
+                <article class="card">
+
+                    <img src="./assets/img/cyberpunk2077.png" alt="Cyberpunk 2077">
+
+                    <h3>Cyberpunk 2077</h3>
+
+                    <p>
+                        RPG futurista de mundo abierto ambientado en Night City.
+                    </p>
+
+                </article>
+
+                <article class="card">
+
+                    <img src="./assets/img/eldenring.jpeg" alt="Elden Ring">
+
+                    <h3>Elden Ring</h3>
+
+                    <p>
+                        Una aventura épica llena de exploración y combates.
+                    </p>
+
+                </article>
+
+                <article class="card">
+
+                    <img src="./assets/img/rdr2.jpg" alt="Red Dead Redemption 2">
+
+                    <h3>Red Dead Redemption 2</h3>
+
+                    <p>
+                        Viví el salvaje oeste en uno de los mejores juegos de la historia.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <section id="reseñas">
+
+            <h2>Reseñas de Jugadores</h2>
+
+            <div class="grid-reseñas">
+
+                <article class="reseña">
+
+                    <h3>★★★★★</h3>
+
+                    <p>
+                        “Una obra maestra!.”
+                    </p>
+
+                </article>
+
+                <article class="reseña">
+
+                    <h3>★★★☆☆</h3>
+
+                    <p>
+                        “IGN 7/10, le falta mas jugo.”
+                    </p>
+
+                </article>
+
+                <article class="reseña">
+
+                    <h3>★★★★★</h3>
+
+                    <p>
+                        “Oh! sí no lo puedo creer.”
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <section id="trailer">
+
+            <h2>Trailer Epico</h2>
+
+            <div class="video-container">
+
+                <!--
+                <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/qIcTM8WXFjk"
+                    title="Trailer"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+                -->
+                <iframe width="560" height="315"
+                 src="https://www.youtube.com/embed/qIcTM8WXFjk?si=Hb6L18gJTPbRO9Ol"
+                 title="YouTube video player" frameborder="0"
+                 allow="accelerometer; autoplay; clipboard-write;
+                 encrypted-media; gyroscope; picture-in-picture;
+                 web-share" referrerpolicy="strict-origin-when-cross-origin"
+                 allowfullscreen></iframe>
+            </div>
+
+        </section>
+
+        <section id="contacto">
+
+            <h2>Contacto</h2>
+
+            <form action="https://formspree.io/f/mkoekvjw" method="POST">
+
+                <input
+                    type="text"
+                    name="nombre"
+                    placeholder="Tu nombre"
+                    required
+                >
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Tu correo electrónico"
+                    required
+                >
+
+                <textarea
+                    name="mensaje"
+                    placeholder="Escribí tu mensaje"
+                    rows="5"
+                    required>
+                </textarea>
+
+                <button type="submit">
+                    Enviar
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>
+            © 2026 ElPortalGamer
+        </p>
+
+    </footer>
+
+</body>
+</html>
