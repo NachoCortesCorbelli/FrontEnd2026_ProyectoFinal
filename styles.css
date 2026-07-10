@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +9,32 @@ body {
     background-color: #0f0f0f;
     color: white;
     line-height: 1.6;
+}
+
+.skip-link {
+    position: absolute;
+    top: -50px;
+    left: 10px;
+    background-color: #00ffcc;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    z-index: 1000;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #00ffcc;
+    outline-offset: 2px;
 }
 
 header {
@@ -35,6 +60,13 @@ nav {
     padding: 15px;
     position: sticky;
     top: 0;
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
 }
 
 nav ul {
@@ -55,6 +87,33 @@ nav a {
 
 nav a:hover {
     color: #00ffcc;
+}
+
+.btn-carrito {
+    background-color: #1e1e1e;
+    color: #00ffcc;
+    border: 2px solid #00ffcc;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-carrito:hover {
+    background-color: #00ffcc;
+    color: black;
+}
+
+.contador-carrito {
+    background-color: #ff4d4d;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 0.85rem;
 }
 
 
@@ -173,6 +232,110 @@ section h2 {
     padding: 0 15px 20px;
 }
 
+.productos-subtitulo {
+    text-align: center;
+    margin-top: -25px;
+    margin-bottom: 35px;
+    color: #aaaaaa;
+}
+
+.estado-productos {
+    text-align: center;
+    color: #00ffcc;
+    margin-bottom: 20px;
+}
+
+.contenedor-productos {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 25px;
+}
+
+.producto-card {
+    background-color: #1e1e1e;
+
+    width: 260px;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: transform 0.3s,
+                box-shadow 0.3s;
+}
+
+.producto-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ffcc;
+}
+
+.producto-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background-color: #000;
+}
+
+.producto-card .producto-info {
+    padding: 15px;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.producto-card h3 {
+    font-size: 1.05rem;
+}
+
+.producto-precio {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.precio-oferta {
+    color: #00ffcc;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.precio-normal {
+    color: #888;
+    text-decoration: line-through;
+    font-size: 0.9rem;
+}
+
+.btn-agregar {
+    margin-top: auto;
+    background-color: #00ffcc;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-agregar:hover {
+    background-color: white;
+}
+
+.btn-agregar:disabled {
+    background-color: #444;
+    color: #999;
+    cursor: not-allowed;
+}
+
 
 .grid-reseñas {
     display: grid;
@@ -220,6 +383,12 @@ form {
     gap: 15px;
 }
 
+.campo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 input,
 textarea {
     padding: 15px;
@@ -229,6 +398,23 @@ textarea {
     border-radius: 5px;
 
     font-size: 1rem;
+}
+
+input.campo-invalido,
+textarea.campo-invalido {
+    outline: 2px solid #ff4d4d;
+}
+
+.error-mensaje {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    min-height: 1.1em;
+}
+
+.confirmacion-form {
+    color: #00ffcc;
+    text-align: center;
+    font-weight: bold;
 }
 
 button {
@@ -262,8 +448,153 @@ footer {
 }
 
 
+/* Modal del carrito */
+.carrito-modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+
+    display: flex;
+    justify-content: flex-end;
+
+    z-index: 200;
+}
+
+.carrito-modal[hidden] {
+    display: none;
+}
+
+.carrito-contenido {
+    background-color: #1b1b1b;
+    width: 380px;
+    max-width: 100%;
+    height: 100%;
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+}
+
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.cerrar-carrito {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.cerrar-carrito:hover {
+    color: #00ffcc;
+    background: none;
+}
+
+.carrito-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    flex-grow: 1;
+}
+
+.carrito-item {
+    display: flex;
+    gap: 12px;
+
+    background-color: #262626;
+    padding: 10px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.carrito-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.carrito-item-info {
+    flex-grow: 1;
+}
+
+.carrito-item-info h4 {
+    font-size: 0.95rem;
+}
+
+.carrito-item-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.carrito-item-cantidad button {
+    padding: 3px 10px;
+    font-size: 0.9rem;
+}
+
+.carrito-item-eliminar {
+    background: none;
+    color: #ff6b6b;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 5px;
+}
+
+.carrito-item-eliminar:hover {
+    color: #ff4d4d;
+    background: none;
+}
+
+.carrito-vacio {
+    text-align: center;
+    color: #888;
+    margin-top: 30px;
+}
+
+.carrito-footer {
+    border-top: 1px solid #333;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.carrito-total {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.btn-vaciar {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid #ff4d4d;
+    color: #ff4d4d;
+}
+
+.btn-vaciar:hover {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+
 @media (max-width: 768px) {
 
+    nav {
+        flex-direction: column;
+    }
 
     nav ul {
         flex-direction: column;
@@ -294,6 +625,10 @@ footer {
 
     .card {
         width: 90%;
+    }
+
+    .carrito-contenido {
+        width: 100%;
     }
 
 }

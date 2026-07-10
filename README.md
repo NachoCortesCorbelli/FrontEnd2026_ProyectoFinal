@@ -1,19 +1,24 @@
-# ElPortalGamer
+ElPortalGamer 🎮
 
-Proyecto Front End inspirado en juegos de PC.
+Catálogo de videojuegos para PC con carrito de compras dinámico.
 
-## Tecnologías utilizadas
+Tecnologías
 
-- HTML5
-- CSS3
-- Flexbox
-- Grid
-- Media Queries
 
-## Características
+HTML5
+CSS3 (Flexbox, Grid, Media Queries)
+JavaScript (DOM, Fetch API, localStorage)
+Formspree (formulario de contacto)
+CheapShark API (ofertas de juegos)
 
-- Diseño responsive
-- Cards de videojuegos
-- Sección de reseñas
-- Trailer integrado
-- Formulario funcional con Formspree
+
+Características
+
+
+Catálogo de juegos destacados y ofertas en vivo desde una API
+Carrito de compras (agregar, editar cantidad, eliminar, total dinámico)
+Persistencia del carrito en localStorage
+Formulario de contacto con validación en JavaScript
+Reseñas y trailer embebido
+Diseño responsive
+SEO básico y accesibilidad (alt, foco visible, skip link)

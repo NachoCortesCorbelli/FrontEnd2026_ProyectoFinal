@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>ElPortalGamer | Juegos de PC</title>
+
+    <meta name="description" content="Catálogo de videojuegos para PC con carrito de compras: ofertas en tiempo real, reseñas y trailers.">
+
+    <meta name="keywords" content="videojuegos, pc, steam, cyberpunk, elden ring, ofertas, carrito de compras">
+
+    <meta name="author" content="Tu nombre">
+
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="ElPortalGamer | Juegos de PC">
+
+    <meta property="og:description" content="Catálogo de videojuegos para PC con carrito de compras.">
+
+    <meta property="og:type" content="website">
 
     <link rel="icon" type="image/png" href="./assets/img/favicon-32x32.png">
 
@@ -13,9 +29,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
-</head>
 
+</head>
 <body>
+
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <header>
         <h1>ElPortalGamer</h1>
@@ -26,13 +44,19 @@
         <ul>
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#juegos">Juegos</a></li>
+            <li><a href="#productos">Productos</a></li>
             <li><a href="#reseñas">Reseñas</a></li>
             <li><a href="#trailer">Trailer</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
+
+        <button id="btn-carrito" class="btn-carrito" aria-haspopup="dialog" aria-controls="carrito-modal" aria-label="Abrir carrito de compras">
+            🛒 Carrito
+            <span id="contador-carrito" class="contador-carrito" aria-live="polite">0</span>
+        </button>
     </nav>
 
-    <main>
+    <main id="main-content">
 
         <section id="inicio">
 
@@ -58,7 +82,7 @@
 
                 <article class="card">
 
-                    <img src="./assets/img/cyberpunk2077.png" alt="Cyberpunk 2077">
+                    <img src="./assets/img/cyberpunk2077.png" alt="Portada de Cyberpunk 2077" loading="lazy">
 
                     <h3>Cyberpunk 2077</h3>
 
@@ -70,7 +94,7 @@
 
                 <article class="card">
 
-                    <img src="./assets/img/eldenring.jpeg" alt="Elden Ring">
+                    <img src="./assets/img/eldenring.jpeg" alt="Portada de Elden Ring" loading="lazy">
 
                     <h3>Elden Ring</h3>
 
@@ -82,7 +106,7 @@
 
                 <article class="card">
 
-                    <img src="./assets/img/rdr2.jpg" alt="Red Dead Redemption 2">
+                    <img src="./assets/img/rdr2.jpg" alt="Portada de Red Dead Redemption 2" loading="lazy">
 
                     <h3>Red Dead Redemption 2</h3>
 
@@ -92,6 +116,21 @@
 
                 </article>
 
+            </div>
+
+        </section>
+
+        <section id="productos">
+
+            <h2>Ofertas en Vivo</h2>
+            <p class="productos-subtitulo">Precios reales de PC, actualizados con la API de CheapShark</p>
+
+            <div id="estado-productos" class="estado-productos" role="status" aria-live="polite">
+                Cargando ofertas...
+            </div>
+
+            <div id="contenedor-productos" class="contenedor-productos">
+                <!-- Las cards de productos se generan dinámicamente desde script.js -->
             </div>
 
         </section>
@@ -142,16 +181,6 @@
 
             <div class="video-container">
 
-                <!--
-                <iframe
-                    width="560"
-                    height="315"
-                    src="https://www.youtube.com/embed/qIcTM8WXFjk"
-                    title="Trailer"
-                    frameborder="0"
-                    allowfullscreen>
-                </iframe>
-                -->
                 <iframe width="560" height="315"
                  src="https://www.youtube.com/embed/qIcTM8WXFjk?si=Hb6L18gJTPbRO9Ol"
                  title="YouTube video player" frameborder="0"
@@ -167,38 +196,77 @@
 
             <h2>Contacto</h2>
 
-            <form action="https://formspree.io/f/mkoekvjw" method="POST">
+            <form id="form-contacto" action="https://formspree.io/f/mkoekvjw" method="POST" novalidate>
 
-                <input
-                    type="text"
-                    name="nombre"
-                    placeholder="Tu nombre"
-                    required
-                >
+                <div class="campo-form">
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Tu nombre"
+                        aria-describedby="error-nombre"
+                        required
+                    >
+                    <span class="error-mensaje" id="error-nombre"></span>
+                </div>
 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Tu correo electrónico"
-                    required
-                >
+                <div class="campo-form">
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Tu correo electrónico"
+                        aria-describedby="error-email"
+                        required
+                    >
+                    <span class="error-mensaje" id="error-email"></span>
+                </div>
 
-                <textarea
-                    name="mensaje"
-                    placeholder="Escribí tu mensaje"
-                    rows="5"
-                    required>
-                </textarea>
+                <div class="campo-form">
+                    <textarea
+                        id="mensaje"
+                        name="mensaje"
+                        placeholder="Escribí tu mensaje"
+                        rows="5"
+                        aria-describedby="error-mensaje"
+                        required>
+                    </textarea>
+                    <span class="error-mensaje" id="error-mensaje"></span>
+                </div>
 
                 <button type="submit">
                     Enviar
                 </button>
+
+                <p id="confirmacion-form" class="confirmacion-form" role="status" aria-live="polite"></p>
 
             </form>
 
         </section>
 
     </main>
+
+    <div id="carrito-modal" class="carrito-modal" role="dialog" aria-modal="true" aria-labelledby="carrito-titulo" hidden>
+        <div class="carrito-contenido">
+
+            <div class="carrito-header">
+                <h2 id="carrito-titulo">Tu Carrito</h2>
+                <button id="cerrar-carrito" class="cerrar-carrito" aria-label="Cerrar carrito">✕</button>
+            </div>
+
+            <div id="carrito-items" class="carrito-items">
+
+            </div>
+
+            <p id="carrito-vacio" class="carrito-vacio">Tu carrito está vacío.</p>
+
+            <div class="carrito-footer">
+                <p class="carrito-total">Total: <span id="carrito-total">$0.00</span></p>
+                <button id="vaciar-carrito" class="btn-vaciar">Vaciar carrito</button>
+            </div>
+
+        </div>
+    </div>
 
     <footer>
 
@@ -208,5 +276,6 @@
 
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
